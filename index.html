@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Wolf Pack — Premium Clothing for Disciplined Men</title>
+  <meta name="description" content="Wolf Pack is a premium men's clothing brand built for discipline, strength, and focus. Shop oversized tees, gym wear, and limited drops. Bold. Intelligence. Fearless." />
+  <meta name="keywords" content="Wolf Pack, premium men's clothing, oversized tees, gym wear, masculine fashion, limited drops, Indian streetwear" />
+  <meta name="author" content="Wolf Pack" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wolf Pack — Premium Clothing for Disciplined Men" />
+  <meta property="og:description" content="Premium clothing brand for men who move forward. Train. Build. Earn. Repeat." />
+  <meta property="og:image" content="assets/images/hero-bg.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0B0B0B" />
+
+  <!-- Fonts preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css?v=10" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo-final.png" />
+</head>
+<body>
+
+  <!-- ====================================================
+       OFFER BANNER
+       ==================================================== -->
+  <div class="offer-banner" id="offer-banner" style="display: none;">
+    <!-- Rendered by JS -->
+  </div>
+
+  <!-- ====================================================
+       LOADING SCREEN
+       ==================================================== -->
+  <div class="loader" id="loader">
+    <img src="logo-final.png" alt="Wolf Pack" class="loader-logo" />
+  </div>
+
+  <!-- ====================================================
+       NAVBAR (Removed per request)
+       ==================================================== -->
+  <!-- <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="logo-final.png" alt="Wolf Pack" />
+    </a>
+  </nav> -->
+
+  <!-- Mobile Menu (Removed) -->
+
+  <!-- ====================================================
+       GLOBAL SMOKE BACKGROUND (WebGL)
+       ==================================================== -->
+  <canvas id="smokeCanvas"></canvas>
+
+  <!-- ====================================================
+       HERO SECTION
+       ==================================================== -->
+  <section class="hero" id="hero">
+
+    <div class="hero-content">
+      <img src="logo-final.png" alt="Wolf Pack Logo" class="hero-logo" />
+      <h1 class="flow-text" id="flow-text">WOLF PACK</h1>
+
+      <p class="hero-sub">
+        • PREMIUM CLOTHING BRAND •<br />
+        BOLD . INTELLIGENCE . FEARLESS
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://www.instagram.com/wolfpack_in?igsh=aDlwMmc4NzNrcTc1" target="_blank" rel="noopener" class="btn btn-outline">Join the Pack</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       BANNER SLIDER
+       ==================================================== -->
+  <section class="banner-section" id="banner-section" style="display: none;">
+    <div class="banner-slider-container">
+      <div class="banner-track" id="banner-track">
+        <!-- Rendered by JS -->
+      </div>
+      
+      <!-- Optional Dots -->
+      <div class="banner-dots" id="banner-dots">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FEATURED COLLECTION
+       ==================================================== -->
+  <section class="section featured-collection" id="collection">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="subheading">Premium Collection</span>
+        <h2>Built Different</h2>
+        <div class="divider"></div>
+        <p>Every piece engineered for men who demand more from their wardrobe.</p>
+      </div>
+
+      <div class="products-grid stagger-children" id="products-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ====================================================
+       LIFESTYLE SECTION
+       ==================================================== -->
+  <section class="lifestyle" id="lifestyle">
+    <div class="lifestyle-bg">
+      <img src="assets/images/lifestyle.png" alt="Wolf Pack Lifestyle" />
+    </div>
+
+    <div class="lifestyle-content">
+      <span class="subheading reveal">Exclusive</span>
+      <h2 class="reveal">Not Every Man<br />Belongs Here</h2>
+      <div class="divider reveal"></div>
+      <p class="reveal">Designed for men who choose progress over comfort. This isn't for the average — it's for the relentless.</p>
+      <a href="https://www.instagram.com/wolfpack_in?igsh=aDlwMmc4NzNrcTc1" target="_blank" rel="noopener" class="btn btn-primary reveal">Enter the Pack</a>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       SOCIAL PROOF / REVIEWS
+       ==================================================== -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="subheading">The Pack Speaks</span>
+        <h2>Earned Trust</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="reviews-grid stagger-children">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Quality feels premium. The oversized tee is the best I've owned — heavy cotton, perfect fit. This brand gets it."</p>
+          <span class="review-author">— Arjun K.</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Clean design. Strong identity. The hoodie is built like armor. Wolf Pack is the real deal."</p>
+          <span class="review-author">— Rahul M.</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Finally a brand that understands masculine fashion without being cringe. Ordered twice in one month."</p>
+          <span class="review-author">— Vikram S.</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The joggers are insane quality. Wore them to the gym and got three compliments. Ordering more."</p>
+          <span class="review-author">— Karan D.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer class="footer" id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="logo-final.png" alt="Wolf Pack" />
+      </div>
+
+      <div class="footer-links">
+        <a href="#collection">Collection</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/wolfpack_in?igsh=aDlwMmc4NzNrcTc1" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="5" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/918523921392?text=Hi%20Wolf%20Pack%2C%20I%20want%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.11-1.14l-.29-.174-3.01.79.81-2.96-.19-.3A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+          </svg>
+        </a>
+        <!-- Email / Contact -->
+        <a href="mailto:contact@wolfpack.in" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="22,7 12,13 2,7" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-quote">
+        "Stay Hungry. Stay Dangerous."
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 Wolf Pack. All rights reserved. Bold. Intelligence. Fearless.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================
+       PRODUCT DETAIL MODAL
+       ==================================================== -->
+  <div class="product-detail-overlay" id="product-detail-overlay">
+    <div class="product-detail-modal" id="product-detail-modal">
+      <!-- Close Button -->
+      <button class="pd-close" id="pd-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="pd-content">
+        <!-- Image Gallery (Left) -->
+        <div class="pd-gallery">
+          <div class="pd-gallery-track" id="pd-gallery-track">
+            <!-- Slides rendered by JS -->
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="pd-arrow pd-arrow-left" id="pd-arrow-left" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="pd-arrow pd-arrow-right" id="pd-arrow-right" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Dots Indicator -->
+          <div class="pd-dots" id="pd-dots">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Swipe Hint (mobile) -->
+          <div class="pd-swipe-hint" id="pd-swipe-hint">
+            <span>Swipe to see more</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Product Info (Right) -->
+        <div class="pd-info">
+          <span class="pd-tag" id="pd-tag"></span>
+          <h2 class="pd-name" id="pd-name"></h2>
+          <span class="pd-category" id="pd-category"></span>
+          <div class="pd-price-row">
+            <span class="pd-price" id="pd-price"></span>
+          </div>
+
+          <div class="pd-divider"></div>
+
+          <p class="pd-description" id="pd-description"></p>
+
+          <div class="pd-divider"></div>
+
+          <!-- Buy via WhatsApp -->
+          <a href="#" class="pd-buy-btn" id="pd-buy-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.11-1.14l-.29-.174-3.01.79.81-2.96-.19-.3A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+            </svg>
+            <span>Buy Now</span>
+          </a>
+
+          <p class="pd-whatsapp-note">Tap to chat with us on WhatsApp and place your order instantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       FLOATING WHATSAPP BUTTON
+       ==================================================== -->
+  <a href="https://wa.me/918523921392?text=Hi%20Wolf%20Pack%2C%20I%20want%20to%20know%20more%20about%20your%20collection." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.11-1.14l-.29-.174-3.01.79.81-2.96-.19-.3A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+    </svg>
+  </a>
+
+  <!-- Custom JS -->
+  <script src="js/main.js?v=4"></script>
+  <script src="js/smoke.js"></script>
+</body>
+</html>

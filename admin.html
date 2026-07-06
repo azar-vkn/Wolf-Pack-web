@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolf Pack — Admin Panel</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/png" href="logo-final.png" />
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+
+  <!-- ====================================================
+       LOGIN SCREEN
+       ==================================================== -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-box">
+      <img src="logo-final.png" alt="Wolf Pack Logo">
+      <h1>Admin Portal</h1>
+      <p>Authorized personnel only.</p>
+      
+      <form id="login-form">
+        <div class="error-msg" id="login-error">Incorrect password.</div>
+        <div class="form-group">
+          <input type="password" id="admin-password" class="form-input" placeholder="Enter Admin Password" required>
+        </div>
+        <button type="submit" class="btn btn-gold btn-full">Enter Pack</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       ADMIN DASHBOARD LAYOUT
+       ==================================================== -->
+  <div class="admin-layout" id="admin-layout">
+    
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-left">
+        <img src="logo-final.png" alt="Wolf Pack Logo">
+        <h2>Wolf Pack Admin</h2>
+        <span>v1.0</span>
+      </div>
+      <div class="admin-topbar-right">
+        <button class="btn btn-outline btn-small" onclick="window.adminSeedData()">Seed Demo Data</button>
+        <button class="btn btn-danger btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-content">
+      
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Products</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Bestsellers</div>
+          <div class="stat-value" id="stat-bestsellers">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Limited Editions</div>
+          <div class="stat-value" id="stat-limited">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Offers</div>
+          <div class="stat-value" id="stat-offers">None</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="tab-products">Products</button>
+        <button class="tab-btn" data-tab="tab-offers">Top Text Offer</button>
+        <button class="tab-btn" data-tab="tab-sliders">Image Banners</button>
+      </div>
+
+      <!-- TAB: PRODUCTS -->
+      <div class="tab-content active" id="tab-products">
+        <div class="products-table-wrap">
+          <div class="products-table-header">
+            <h3>Product Catalog</h3>
+            <button class="btn btn-gold btn-small" id="add-product-btn">+ Add Product</button>
+          </div>
+          
+          <table>
+            <thead>
+              <tr>
+                <th width="60">Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Tag</th>
+                <th width="150">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+          
+          <div class="empty-state" id="products-empty" style="display: none;">
+            <p>No products found. Add a product or seed demo data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: OFFERS -->
+      <div class="tab-content" id="tab-offers">
+        <div class="offer-panel">
+          <div class="offer-toggle-row">
+            <h3>Site-wide Promotional Banner</h3>
+            <label class="toggle">
+              <input type="checkbox" id="offer-enabled">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <form id="offer-form">
+            <div class="form-group">
+              <label>Offer Text</label>
+              <input type="text" id="offer-text" class="form-input" placeholder="e.g. FLAT 20% OFF ALL HOODIES — USE CODE WOLF20">
+            </div>
+            
+            <div class="offer-preview" id="offer-preview" style="display: none;">
+              <!-- Live Preview -->
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: right;">
+              <button type="submit" class="btn btn-gold">Save Offer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    <!-- TAB: SLIDERS (BANNERS) -->
+    <div class="tab-content" id="tab-sliders" style="display:none;">
+      <div class="offer-panel">
+        <div class="offer-toggle-row">
+          <h3>Upload Image Banner</h3>
+        </div>
+        <form id="banner-form">
+          <div class="form-group image-upload-area" id="banner-upload-area" style="margin-bottom: 2rem;">
+            <input type="file" id="banner-image" accept="image/png, image/jpeg, image/webp" class="file-input">
+            <div class="upload-default">
+              <span>+</span>
+              <p>Drag & Drop banner image or click to browse</p>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Order / Priority (Lower is first)</label>
+              <input type="number" id="banner-order" class="form-input" value="1">
+            </div>
+          </div>
+          
+          <div style="margin-top: 1rem; text-align: right;">
+            <button type="submit" class="btn btn-gold" id="banner-submit">Upload Banner</button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="products-table-wrap" style="margin-top: 2rem;">
+        <div class="products-table-header">
+          <h3>Active Banners</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th width="150">Banner Image</th>
+              <th>Order</th>
+              <th width="150">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="banners-tbody">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+        <div class="empty-state" id="banners-empty" style="display: none;">
+          <p>No banners uploaded yet.</p>
+        </div>
+      </div>
+    </div>
+
+    </main>
+  </div>
+
+  <!-- ====================================================
+       PRODUCT MODAL
+       ==================================================== -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Add New Product</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      
+      <form id="product-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="prod-name" class="form-input" required>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>Price (INR)</label>
+              <input type="text" id="prod-price" class="form-input" placeholder="₹1,499" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Sort Order</label>
+              <input type="number" id="prod-order" class="form-input" placeholder="1">
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="prod-category" class="form-input" required>
+                <option value="oversized">Oversized Tees</option>
+                <option value="gym">Gym Wear</option>
+                <option value="everyday">Everyday Premium</option>
+                <option value="limited">Limited Drops</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Tag</label>
+              <select id="prod-tag" class="form-input">
+                <option value="">None</option>
+                <option value="bestseller">Bestseller</option>
+                <option value="limited">Limited</option>
+                <option value="new">New</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group" style="margin-top: 1rem;">
+            <label>Product Image</label>
+            <div class="image-upload-area">
+              <input type="file" id="prod-image" accept="image/png, image/jpeg, image/webp">
+              <div class="upload-default">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Click or drag image here</div>
+                <div class="upload-hint">JPG, PNG or WEBP (Max 2MB)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-gold" id="modal-submit"><span id="modal-submit-text">Add Product</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom JS -->
+  <script src="js/admin.js?v=2"></script>
+</body>
+</html>
